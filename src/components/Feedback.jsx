@@ -1,12 +1,26 @@
 export const Feedback = () => {
   return (
-    <p>sdfgsdfg</p>
-    // <div className="description">
-    //   <h1> Sip Happens Café</h1>
-    //   <p>
-    //     Please leave your feedback about our service by selecting one of the
-    //     options below.
-    //   </p>
-    // </div>
+    <div className="feedback">
+      <div>
+        <span>Good: </span>
+        <span>0</span>
+      </div>
+      <div>
+        <span>Neutral: </span>
+        <span>0</span>
+      </div>
+      <div>
+        <span>Bad: </span>
+        <span>0</span>
+      </div>
+      <div>
+        <span>Total: </span>
+        <span>0</span>
+      </div>
+      <div>
+        <span>Positive: </span>
+        <span>0</span>
+      </div>
+    </div>
   );
 };
