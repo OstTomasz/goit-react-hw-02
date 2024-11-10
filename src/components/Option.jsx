@@ -1,8 +1,6 @@
-// import { useState } from "react";
-
-export const Button = ({ increaseValue, children }) => {
+export const Option = ({ handleClick, children }) => {
   return (
-    <button onClick={increaseValue} type="button">
+    <button onClick={handleClick} type="button">
       {children}
     </button>
   );
