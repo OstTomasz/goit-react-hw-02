@@ -1,33 +1,23 @@
-import { useState } from "react";
-import { options, total } from "./Feedback";
+import { Button } from "./Option";
 
-const Button = ({ option, children }) => {
-  let [value, setValue] = useState(0);
+export const Options = ({ increaseValue, resetValues, total }) => {
+  const result =
+    total > 0 ? (
+      <div className="options">
+        <Button increaseValue={() => increaseValue("good")}>Good</Button>
+        <Button increaseValue={() => increaseValue("neutral")}>Neutral</Button>
+        <Button increaseValue={() => increaseValue("bad")}>Bad</Button>
 
-  const handleClick = () => {
-    setValue(value + 1);
-  };
-
-  return (
-    <button onClick={handleClick} type="button">
-      {children}
-    </button>
-  );
-};
-
-const Reset = ({ children }) => {
-  if (total > 0) {
-    return <Button>Reset</Button>;
-  }
-};
-
-export const Options = () => {
-  return (
-    <div className="options">
-      <Button option="good">Good</Button>
-      <Button>Neutral</Button>
-      <Button>Bad</Button>
-      <Reset />
-    </div>
-  );
+        <button onClick={resetValues} type="button">
+          Reset
+        </button>
+      </div>
+    ) : (
+      <div className="options">
+        <Button increaseValue={() => increaseValue("good")}>Good</Button>
+        <Button increaseValue={() => increaseValue("neutral")}>Neutral</Button>
+        <Button increaseValue={() => increaseValue("bad")}>Bad</Button>
+      </div>
+    );
+  return result;
 };
