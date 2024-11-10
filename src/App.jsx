@@ -1,12 +1,20 @@
 import { Description } from "./components/Description";
 import { Feedback } from "./components/Feedback";
 import { Options } from "./components/Options";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const initialValues = { good: 0, neutral: 0, bad: 0 };
 
 export const App = () => {
-  const [values, setValues] = useState(initialValues);
+  const [values, setValues] = useState(() => {
+    const savedValues = window.localStorage.getItem("saved-values");
+    if (savedValues !== null) return JSON.parse(savedValues);
+    return initialValues;
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem("saved-values", JSON.stringify(values));
+  }, [values]);
 
   const total = Array.from(Object.values(values)).reduce((acc, curr) => {
     return acc + curr;
